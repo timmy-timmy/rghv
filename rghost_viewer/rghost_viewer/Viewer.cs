@@ -235,5 +235,13 @@ namespace RGHV {
         public void SetProxy(string ip) {
             this.tbProxy.Text = ip;
         }
+        protected override void OnClosed(EventArgs e) {
+            base.OnClosed(e);
+            if(proxyFinder != null && !proxyFinder.IsDisposed) {
+                proxyFinder.StopAndClose();
+                proxyFinder.Dispose();
+                proxyFinder = null;
+            }
+        }
     }
 }

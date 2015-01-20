@@ -43,62 +43,62 @@
             this.controlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // contentPanel
             // 
             this.contentPanel.AutoScroll = true;
             this.contentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.contentPanel.Controls.Add(this.flowPanel);
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentPanel.Location = new System.Drawing.Point(0, 87);
-            this.contentPanel.Name = "panel1";
+            this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(516, 312);
             this.contentPanel.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // flowPanel
             // 
             this.flowPanel.AutoSize = true;
             this.flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanel.Location = new System.Drawing.Point(0, 0);
-            this.flowPanel.Name = "flowLayoutPanel1";
+            this.flowPanel.Name = "flowPanel";
             this.flowPanel.Size = new System.Drawing.Size(512, 308);
             this.flowPanel.TabIndex = 0;
             // 
-            // statusStrip1
+            // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 399);
-            this.statusStrip.Name = "statusStrip1";
+            this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(516, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // statusLabel
             // 
-            this.statusLabel.Name = "toolStripStatusLabel1";
+            this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(79, 17);
             this.statusLabel.Text = "Disconnected";
             // 
-            // toolStrip1
+            // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRefresh});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip1";
+            this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(516, 25);
             this.toolStrip.TabIndex = 3;
             this.toolStrip.Text = "toolStrip1";
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Image = global::RGHV.Properties.Resources.arrow_refresh_4_icon;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(66, 22);
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // panel2
+            // controlPanel
             // 
             this.controlPanel.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.controlPanel.Controls.Add(this.btnShowFinder);
@@ -109,17 +109,17 @@
             this.controlPanel.Controls.Add(this.cbProxy);
             this.controlPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.controlPanel.Location = new System.Drawing.Point(0, 25);
-            this.controlPanel.Name = "panel2";
+            this.controlPanel.Name = "controlPanel";
             this.controlPanel.Size = new System.Drawing.Size(516, 62);
             this.controlPanel.TabIndex = 4;
             // 
             // btnShowFinder
             // 
+            this.btnShowFinder.Image = global::RGHV.Properties.Resources.Search_icon;
             this.btnShowFinder.Location = new System.Drawing.Point(327, 5);
             this.btnShowFinder.Name = "btnShowFinder";
-            this.btnShowFinder.Size = new System.Drawing.Size(86, 23);
+            this.btnShowFinder.Size = new System.Drawing.Size(26, 23);
             this.btnShowFinder.TabIndex = 5;
-            this.btnShowFinder.Text = "Find proxy...";
             this.btnShowFinder.UseVisualStyleBackColor = true;
             this.btnShowFinder.Click += new System.EventHandler(this.btnShowFinder_Click);
             // 
@@ -178,6 +178,7 @@
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Viewer";
             this.Text = "RGhost viewer v.1.1";
             this.contentPanel.ResumeLayout(false);

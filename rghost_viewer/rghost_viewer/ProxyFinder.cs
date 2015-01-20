@@ -18,9 +18,10 @@ namespace RGHV {
             InitializeComponent();
             this.viewer = viewer;
         }
+        bool closing;
         Viewer viewer;
         const string host = "http://fineproxy.org";
-
+        Thread workerThread;
 
         private void btnRefresh_Click(object sender, EventArgs e) {
             DoRefresh();
@@ -44,7 +45,8 @@ namespace RGHV {
                     ips.RemoveAt(0);
                     ips.RemoveAt(ips.Count - 1);
                     ips = ips.Distinct().ToList();
-                    Thread t = new Thread(() => {
+                    StopThread(workerThread);
+                    workerThread = new Thread(() => {
                         Parallel.ForEach(ips, ip => {
                             lock(ips) {
                                 bool last = ips.IndexOf(ip) == ips.Count - 1;
@@ -52,7 +54,7 @@ namespace RGHV {
                             }
                         });
                     });
-                    t.Start();
+                    workerThread.Start();
                     if(ips.Count == 0) DoDone();
                 }
             }
@@ -63,6 +65,7 @@ namespace RGHV {
         }
 
         void TestIp(string ip, bool last, Stopwatch sw) {
+            if(closing) return;
             ip = ip.Trim();
             try {
                 using(var client = new WebClient()) {
@@ -93,14 +96,27 @@ namespace RGHV {
             toolStripStatusLabel1.Text = "Done!";
         }
         protected override void OnClosing(CancelEventArgs e) {
-            e.Cancel = true;
-            Hide();
+            if(closing) {
+                e.Cancel = false;
+            }
+            else {
+                e.Cancel = true;
+                Hide();
+            }
         }
-
         void listBox1_MouseDoubleClick(object sender, MouseEventArgs e) {
             var selected = listBox1.SelectedItem;
             if(selected == null || viewer == null) return;
             viewer.SetProxy((listBox1.SelectedItem as ProxyIpItem).Ip);
+        }
+        public void StopAndClose() {
+            StopThread(workerThread);
+            closing = true;
+            Close();
+        }
+        void StopThread(Thread t) {
+            if(t == null) return;
+            t.Abort();
         }
     }
 

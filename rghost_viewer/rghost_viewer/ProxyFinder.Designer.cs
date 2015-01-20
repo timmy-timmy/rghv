@@ -61,7 +61,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Image = global::RGHV.Properties.Resources.arrow_refresh_4_icon;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(66, 22);
@@ -86,11 +86,12 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProxyFinder";
             this.ShowInTaskbar = false;
-            this.Text = "ProxyFinder";
+            this.Text = "ProxyFinder - Double click on IP to start using it..";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
